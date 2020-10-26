@@ -11,6 +11,14 @@ class Main {
     }
   }
   insert (item) {
+    if (this.numbers.length == this.count) {
+      let newNums = new Array(this.count * 2)
+      console.log(newNums)
+      for (let i = 0; i < this.count; i++) {
+        newNums[i] = this.numbers[i];
+      }
+      this.numbers = newNums
+    }
     this.numbers[this.count++] = item;
   }
 
@@ -19,4 +27,7 @@ class Main {
 let arrClass = new Main()
 arrClass.insert(10)
 arrClass.insert(20)
+arrClass.insert(30)
+arrClass.insert(40)
 arrClass.print()
+console.log(arrClass.numbers)
