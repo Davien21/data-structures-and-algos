@@ -1,6 +1,6 @@
 const { LinkedList } = require('buckets-js')
 
-let list = new LinkedList();
+let list = LinkedList();
 list.add(10)
 list.add(20)
 list.add(30)
