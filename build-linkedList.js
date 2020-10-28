@@ -10,6 +10,7 @@ class LinkedList {
   constructor () {
     this.first
     this.last
+    this.size = 0;
   }
   isEmpty () {
     return this.first == null
@@ -23,7 +24,7 @@ class LinkedList {
       node.next = this.first
       this.first = node
     }
-     
+    this.size++;
   }
 
   addLast (item) {
@@ -35,6 +36,8 @@ class LinkedList {
       this.last.next = node
       this.last = node
     }
+    this.size++;
+
 
   }
 
@@ -58,12 +61,64 @@ class LinkedList {
     return false
   }
  
+  removeFirst () {
+    if (this.isEmpty()) throw new Error('no such element')
+    if (this.first == this.last) 
+      first = last = null 
+    else {
+      let second = this.first.next
+      this.first.next = null
+      this.first = second
+    }
+
+    this.size--;
+  }
+
+  removeLast () {
+    if (this.isEmpty()) throw new Error('no such element')
+    if (this.first == this.last) 
+      first = last = null 
+    else {
+      let previous = this.getPrevious(this.last);
+      this.last = previous;
+      this.last.next = null
+    }
+
+    this.size--;
+  }
+
+  length () {
+    return this.size;
+
+  }
+
+  getPrevious (node) {
+    let current = this.first;
+    while(current != null) {
+      if (current.next == node) return current;
+      current = current.next;
+    }
+    return null;
+  }
+
+  toArray () {
+    let arr = []
+    let current = this.first
+    while (current != null) {
+      arr.push(current.value)
+      current = current.next
+    }
+    return arr
+  }
+  
+
 }
 
 let list = new LinkedList()
 list.addLast(10)
 list.addLast(20)
 list.addLast(30)
-
-list.indexOf(40)
+list.removeLast()
+list.toArray()
+list.indexOf(30)
  
