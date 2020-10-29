@@ -26,7 +26,7 @@ class Main {
     if (index < 0 || index >= this.count) 
        throw new Error('Illegal Arguement Exception');
 
-    for (let i = index; i < this.items.length; i++) 
+    for (let i = index; i < this.count; i++) 
       this.items[i] = this.items[i + 1];
 
     this.count--;
@@ -41,7 +41,7 @@ class Main {
   }
 
   getMax () {
-    let max = 0;
+    let max = this.items[0];
     for (let i = 0; i < this.count; i++) 
       if (this.items[i] > max) max = this.items[i]
     return max;
