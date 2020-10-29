@@ -79,8 +79,6 @@ class CustomArray {
     // if arr is full, resize
     // push items from index to right
     // increase count
-    if (index == this.count - 1) return this.insert(item)
-    
     if (index < 0 || index >= this.count) 
     throw new Error('Illegal Arguement Exception');
 
@@ -110,5 +108,5 @@ customArray.intersect(customArray2)
 
 // customArray.reverse()
 
-customArray.insertAt(3, 50)
+customArray.insertAt(4, 50)
 customArray.print()
