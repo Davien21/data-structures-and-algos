@@ -47,7 +47,7 @@ class LinkedList {
   removeFirst () {
     // if empty throw err - no such element
     // if just one, first = last = null
-    // else set first to next node
+    // else store second node and redo ref
     if (this.isEmpty()) 
       throw new Error('no such element')
 
@@ -58,7 +58,44 @@ class LinkedList {
       this.first.next = null
       this.first = second
     }
-    
-    
+    this.size--;
+
+  }
+  removeLast () {
+    // if empty throw err - no such element
+    // if just one, first = last = null
+    // traverse to find penultimate node and redo refs
+    // else store second node and redo ref
+    if (this.isEmpty()) 
+      throw new Error('no such element')
+
+    if (this.first == this.last) 
+      first = last = null 
+
+    let previous = this.getPrevious(this.last);
+    this.last = previous;
+    this.last.next = null; 
+
+    this.size++
+  }
+  
+  getPrevious(node) {
+    while (current != null) {
+      if (current.next == node) return current
+      current = current.next
+    }
+  }
+
+  contains (item) {
+    return this.indexOf(item) != -1
+  }
+
+  indexOf (item) {
+    let index = 0;
+    while (current != null) {
+      if (current.value == item) return index
+      index++
+    }
+    return -1
   }
 }
