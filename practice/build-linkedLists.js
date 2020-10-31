@@ -117,8 +117,7 @@ class LinkedList {
       if (current == this.first) main = new Node(current.value); 
       prev = main 
       
-      let holder = new Node(current.next.value, prev); 
-      main = holder 
+      main = new Node(current.next.value, prev);  
       
       current = current.next
     }
