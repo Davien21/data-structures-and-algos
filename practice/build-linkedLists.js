@@ -111,19 +111,21 @@ class LinkedList {
   }
 
   reverse () {
-    let main, prev, current = this.first;
-   
+    if (this.isEmpty()) return 
+
+    let storedReverse, prev, current = this.first;
+    
     while (current.next != null) { //ignore the last node
-      if (current == this.first) main = new Node(current.value); 
-      prev = main 
+      if (current == this.first) storedReverse = new Node(current.value); 
+      prev = storedReverse 
       
-      main = new Node(current.next.value, prev);  
+      storedReverse = new Node(current.next.value, prev);  
       
       current = current.next
     }
     this.last = this.first
     this.last.next = null
-    this.first = main 
+    this.first = storedReverse 
   }
 }
 
