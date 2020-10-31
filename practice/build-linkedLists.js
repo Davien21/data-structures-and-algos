@@ -91,11 +91,57 @@ class LinkedList {
   }
 
   indexOf (item) {
-    let index = 0;
+    let index = 0; 
+    let current = this.first
     while (current != null) {
       if (current.value == item) return index
       index++
     }
     return -1
   }
+
+  toArray () {
+    let arr = []
+    let current = this.first
+    while (current != null) {
+      arr.push(current.value)
+      current = current.next
+    }
+    return arr
+  }
+
+  reverse () {
+    let main, prev, current = this.first;
+   
+    while (current.next != null) { //ignore the last node
+      if (current == this.first) main = new Node(current.value); 
+      prev = main 
+      
+      let holder = new Node(current.next.value, prev); 
+      main = holder 
+      
+      current = current.next
+    }
+    this.last = this.first
+    this.last.next = null
+    this.first = main 
+  }
 }
+
+let list = new LinkedList()
+list.addLast(10)
+list.addLast(20)
+list.addLast(30)
+list.addLast(40)
+list.addLast(50)
+list.addLast(60)
+list.addLast(70)
+list.addLast(80)
+list.addLast(90)
+list.reverse()
+console.log(list.toArray())
+list.reverse()
+console.log(list.toArray())
+list.reverse()
+console.log(list.toArray())
+ 
