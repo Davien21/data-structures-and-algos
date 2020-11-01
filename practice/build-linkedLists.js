@@ -151,6 +151,7 @@ class LinkedList {
 
   printMiddle () {
     let a = this.first, b = this.first
+    if (b == null) throw new Error('no such element')
     // we want it to stop at the 3rd to last node
     while (b != this.last && b.next != this.last) {
       b = b.next.next

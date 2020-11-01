@@ -145,6 +145,8 @@ class LinkedList {
   
   printMiddle () {
     let a = this.first, b = this.first
+    if (b == null) throw new Error('no such element')
+    
     while (b != this.last && b.next != this.last) {
       b = b.next.next
       a = a.next
