@@ -110,7 +110,48 @@ class LinkedList {
     }
     return arr
   }
+
+  reverse () {
+    let previous = this.first
+    let current = this.first.next
+
+    while (current != null) {
+      var next = current.next;
+      current.next = previous;
+      previous = current
+      current = next;
+    }
+    this.last = this.first;
+    this.last.next = null
+    this.first = previous
+  }
+
+  getKthNodeFromTheEnd (k) {
+    let a = this.first
+    let b = this.first
+    if (this.isEmpty()) throw new Error('no such element')
+
+    for(let i = 0; i < k - 1; i++) {
+      b = b.next
+      if (b == null) throw new Error('no such element')
+    }
+    
+    while (b != this.last) {
+      a = a.next
+      b = b.next
+    }
+    return a.value
+  }
   
+  printMiddle () {
+    let a = this.first, b = this.first
+    while (b != this.last && b.next != this.last) {
+      b = b.next.next
+      a = a.next
+    }
+    if (b == this.last) return a.value
+    return [a.value, a.next.value]
+  }
 
 }
 
@@ -118,7 +159,17 @@ let list = new LinkedList()
 list.addLast(10)
 list.addLast(20)
 list.addLast(30)
-list.removeLast()
-list.toArray()
+list.addLast(40)
+list.addLast(50)
+list.addLast(60)
+list.addLast(70)
+// list.reverse()
+console.log(
+list.toArray())
 list.indexOf(30)
+
+console.log(
+  list.getKthNodeFromTheEnd(-1)
+)
+
  

@@ -115,7 +115,7 @@ class LinkedList {
 
     let storedReverse = this.first, prev, current = this.first;
     
-    while (current.next != null) { //ignore the last node
+    while (current.next != null) { // ignore the last node
       if (current == this.first) storedReverse = new Node(current.value); 
       prev = storedReverse 
       
@@ -126,6 +126,39 @@ class LinkedList {
     this.last = this.first
     this.last.next = null
     this.first = storedReverse 
+  }
+
+  getKthFromTheEnd(k) {
+    if (this.isEmpty() || k <= 0 || k > this.size) throw new Error('no such element')
+    
+    let current = this.first, kthNode = this.first, distance;
+    k === 2 ? distance = -1 : distance = 0;
+
+    if (k === 1 || this.size === 1) return this.last
+    
+    while (current != null) {
+      if (distance === k - 1) {
+        kthNode = kthNode.next;
+        distance = 0
+      }
+      distance++
+      current = current.next
+
+    }
+
+    return kthNode
+  }
+
+  printMiddle () {
+    let a = this.first, b = this.first
+    // we want it to stop at the 3rd to last node
+    while (b != this.last && b.next != this.last) {
+      b = b.next.next
+      a = a.next
+    }
+    // if there's one node left - odd, else - even number of items
+    if (b == this.last) return a.value
+    return [a.value, a.next.value]
   }
 }
 
@@ -139,10 +172,13 @@ list.addLast(60)
 list.addLast(70)
 list.addLast(80)
 list.addLast(90)
-list.reverse()
-console.log(list.toArray())
-list.reverse()
-console.log(list.toArray())
-list.reverse()
-console.log(list.toArray())
+console.log(list.printMiddle())
+// console.log(
+// list.getKthFromTheEnd(2))
+// list.reverse()
+// console.log(list.toArray())
+// list.reverse()
+// console.log(list.toArray())
+// list.reverse()
+// console.log(list.toArray())
  
